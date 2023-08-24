@@ -21,7 +21,7 @@ public class ConditionalOperator {
 //		System.out.println(rn);
 		
 		//1~10까지의 정수 난수를 발생시키고 싶어요~
-		int rn = (int) ((Math.random()*10) + 1) ; // 1.0<= ~ <11.0
+		int rn = (int) ((Math.random()*11) + 1) ; // 1.0<= ~ <11.0
 		System.out.println(rn);
 		
 		//10~100까지의 정수 난수를 발생시키고 싶어요~
