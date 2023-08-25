@@ -26,19 +26,22 @@ public class WhileQuiz02 {
 		int input2 = sc.nextInt();
 		
 		
-		int sNum = input1;
-		int eNum = input2;
 		int resNum = 0;
 		if(input1 > input2) {
-			sNum = input2;
-			eNum = input1;
+			int temp = input1; 
+			input1 = input2;
+			input2 = temp ;
 		}
-		int n = sNum;
-		while (n <= eNum) {
+		
+//		int start = (num1 > num2 ? num2:num1);
+//		int end = (num1 > num2 ? num1:num2);
+		
+		int n = input1;
+		while (n <= input2) {
 			resNum += n;
 			n ++;
 		}
-		System.out.println(sNum + " 부터" + eNum + "까지의 누적 합계 : " + resNum);
+		System.out.println(input1 + " 부터" + input2 + "까지의 누적 합계 : " + resNum);
 		sc.close();
 		
 	}

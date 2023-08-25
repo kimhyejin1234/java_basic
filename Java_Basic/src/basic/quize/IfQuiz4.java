@@ -2,7 +2,7 @@ package basic.quize;
 
 import java.util.Scanner;
 
-public class IfQuiz03 {
+public class IfQuiz4 {
 
 	public static void main(String[] args) {
 
@@ -26,52 +26,52 @@ public class IfQuiz03 {
 		System.out.print("정수를 3을 입력하세요 : ");
 		int input3 = sc.nextInt();
 		
-		boolean flag = true;
+		int max = 0;
+		int mid = 0;
+		int min = 0;
+		int err = 0;
 		
 		if(input1 == input2 ) {
 			System.out.println("정수1 과 정수2 가 같습니다. 다른값을 입력하세요. ");
-			flag = false;
+			err = 1;
 		} else if (input1 == input3) {
 			System.out.println("정수1 과 정수3 이 같습니다. 다른값을 입력하세요. ");
-			flag = false;
+			err = 1;
 		} else if (input2 == input3) {
 			System.out.println("정수2 과 정수3 이 같습니다. 다른값을 입력하세요. ");
-			flag = false;
+			err = 1;
 		}
 		
-		int max, mid, min;
-		
-		if(input1 > input2 && input1 > input3) {
-			max = input1;
-			if(input2 > input3) {
-				mid = input2;
-				min = input3;
+		if(err == 0 ) {
+			if(input1 > input2) {
+				if(input1 > input3) {
+					max = input1 ;
+					mid = input2 ;
+					min = input3 ;
+					if(input2 < input3) {
+						mid = input3;
+						min = input2;
+					} 
+				} else {
+					max = input3;
+					mid = input1;
+					min = input2;
+				}
 			} else {
-				mid = input3;
-				min = input2;
+				if(input2 > input3) {
+					max = input2 ;
+					mid = input3 ;
+					min = input1 ;
+					if(input3 < input1) {
+						mid = input1;
+						min = input3;
+					}
+				} else {
+					max = input3;
+					mid = input2;
+					min = input1;
+				}
 			}
-		} else if(input2 > input1 && input2 > input3) {
-			max = input2;
-			if(input3 > input1) {
-				mid = input3;
-				min = input1;
-			} else {
-				mid = input1;
-				min = input3;
-			}
-		} else {
-			max = input3;
-			if(input2 > input1) {
-				mid = input2;
-				min = input1;
-			} else {
-				mid = input1;
-				min = input2;
-			}
-		}
-			
-		
-		if(flag) {
 			System.out.println("가장 큰 값 : " + max);
 			System.out.println("중간   값 : " + mid);
 			System.out.println("가장 작은 값 : " + min);

@@ -2,8 +2,9 @@ package basic.quize;
 
 import java.util.Scanner;
 
-public class SwitchQuiz01 {
+public class SwitchQuiz2 {
 
+	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 
 		/*
@@ -24,7 +25,6 @@ public class SwitchQuiz01 {
 		System.out.print("정수를 2을 입력하세요 : ");
 		int input3 = sc.nextInt();
 		
-		int err = 0;
 		double result = 0.0;
 		switch (input2) {
 		case "*":
@@ -33,7 +33,8 @@ public class SwitchQuiz01 {
 		case "/":
 			if(input3 == 0) {
 				System.out.println("연산자 / 입력시 정수2는 zero 입력 불가 입니다.");
-				err = 1;
+				return;
+				
 			} else {
 				result = (double) input1 / input3;
 			}
@@ -45,13 +46,13 @@ public class SwitchQuiz01 {
 			result = input1 - input3;
 			break;	
 		default:
-			err = 1;
 			System.out.println("연산자는 + , - , * , / 만 입력 가능합니다.");
+			return;
 		}
 		
-		if(err == 0) {
-			System.out.println( "연산 결과 : " + input1 + input2 + input3 + "=" + result );
-		}
+		
+		System.out.println( "연산 결과 : " + input1 + input2 + input3 + "=" + result );
+		
 		
 		sc.close();
 		
