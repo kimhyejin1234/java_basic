@@ -13,8 +13,6 @@ public class PersonMain {
         info() 메서드가 존재합니다.
         */
 
-		Person p = new Person();
-		p.info();
 		
 		Scanner sc = new Scanner(System.in);
 		
