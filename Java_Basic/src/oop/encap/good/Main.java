@@ -9,7 +9,8 @@ public class Main {
 		my.setYear(1992);
 		my.setMonth(12);
 		my.setDay(19);
-		System.out.printf("내 생일은 %d 년 %d 년 %d 일 입니다.\n",my.getYear(),my.getMonth(),my.getDay());
+//		System.out.printf("내 생일은 %d 년 %d 월 %d 일 입니다.\n",my.getYear(),my.getMonth(),my.getDay());
+		my.birthInfo();
 		
 		
 		

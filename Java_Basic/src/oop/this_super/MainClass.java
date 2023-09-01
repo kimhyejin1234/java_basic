@@ -25,7 +25,7 @@ public class MainClass {
 		Warrior w1 = new Warrior("전사짱짱맨");
 		w1.characterInfo();
 		
-		System.out.println("----------------------------");
+		System.out.println("----------------------------");     
 		Mage m1 = new Mage("법사짱짱맨");
 		m1.characterInfo();
 		

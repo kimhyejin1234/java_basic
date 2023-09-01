@@ -21,28 +21,31 @@ public class MyBirth2 {
 	}
 	
 	public void setDay(int day) {
-		boolean flag = isValidateMonth(day);
-		if(flag) {
+		if(isValidateMonth(day)) {
 			this.day = day;
-		}
-		
+		}		
 	}
 	
 	//완성된 생일 정보를 출력해 주는 메서드
 	public void birthInfo() {
 		// year,month,day 셋중 단 하나라도 제대로 값이 셋팅되지 않았다면
 		//출력을 해주지 않겠다.
-		if(this.year != 0 && this.month != 0 && this.day != 0 ) {
-			System.out.printf("내 생일은 %d 년 %d 년 %d 일 입니다.\n",this.year,this.month,this.day);
-		} else {
-			if(this.year == 0) { 
-				System.out.printf("년도 오류 입니다.\n");
-			} else if(this.month == 0) {
-				System.out.printf("월 오류 입니다.\n");
-			} else {
-				System.out.printf("일 오류 입니다.\n");
-			}
+		
+		if(this.year == 0) { 
+			System.out.printf("년도 오류 입니다.\n");
+			return;
 		}
+		if(this.month == 0) {
+			System.out.printf("월 오류 입니다.\n");
+			return;
+		}
+		if(this.day == 0){
+			System.out.printf("일 오류 입니다.\n");
+			return;
+		}
+		
+		System.out.printf("내 생일은 %d 년 %d 월 %d 일 입니다.\n",this.year,this.month,this.day);
+		
 	}
 	
 	private boolean isValidateMonth(int day) {
