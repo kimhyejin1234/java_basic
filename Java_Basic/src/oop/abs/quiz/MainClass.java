@@ -18,8 +18,17 @@ public class MainClass {
 		         - MainClass에서 길이가 5인 정사각형,
 		          반지름이 4인 원의 모든 내용을 호출해 보세요.
 	     */
-		Shape c = new Circle("원",10);
-		Shape r = new Rect("정사각형",10);
+		double area;
+		Shape c = new Circle("원",4);
+		area = c.getArea();
+		c.getName(area);
+		
+		
+		Shape r = new Rect("정사각형",5);
+		area = r.getArea();
+		r.getName(area);
+		
+		
 		
 			
 	}

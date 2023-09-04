@@ -13,18 +13,18 @@ public abstract class Shape {
 	     4. 도형 이름을 출력할 수 있는 메서드 getName()을 선언. (강제 x)
     */
 	private String name;
-	double area;
+	int lenght;
 	
-	public Shape(String name) {
+	public Shape(String name , int lenght) {
 		this.name = name;
+		this.lenght = lenght;
 	}
 
-	public final double getArea() {\
-		if(instanceof)
-		return area;
-	}
+	public abstract double getArea();
 	
-	public abstract String getName();
+	public void getName(double area) {
+		System.out.printf("도형 이름 : %s , 넓이 : %.1f \n" , this.name,area);
+	}
 	
 	
 

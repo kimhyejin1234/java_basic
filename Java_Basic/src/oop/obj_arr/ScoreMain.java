@@ -44,9 +44,10 @@ public class ScoreMain {
 		}
 		System.out.println("=== 성적 출력  === ");
 		for(Score s:scores ) {
-			if(s.name.equals("null")) break;
+			if(s == null) break;
 			s.scoreInfo();
 		}
+		System.out.println("=== 성적 출력 완료 === ");
 		sc.close();
 	}
 

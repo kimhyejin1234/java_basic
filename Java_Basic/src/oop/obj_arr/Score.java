@@ -14,10 +14,10 @@ public class Score {
 	     - 캡슐화를 구현해서 작성해 주세요. (생성자는 맘대로 하세요.)
 	    */
 	
-	String name;
-	int kor = 0;
-	int eng = 0;
-	int mat = 0;
+	private String name;
+	private int kor = 0;
+	private int eng = 0;
+	private int mat = 0;
 	
 	public Score() {}
 	

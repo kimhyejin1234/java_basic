@@ -2,17 +2,16 @@ package oop.abs.quiz;
 
 public class Circle extends Shape {
 
-	public Circle(String name) {
-		super(name);
+	public Circle(String name , int lenght) {
+		super(name,lenght);
 		// TODO Auto-generated constructor stub
 	}
 
-	public Circle(int r) {
-		// TODO Auto-generated constructor stub
+	@Override
+	public double getArea() {
+		return lenght * lenght * Math.PI;
 	}
 
-	public Circle(String string, int i) {
-		// TODO Auto-generated constructor stub
-	}
+	
 
 }
