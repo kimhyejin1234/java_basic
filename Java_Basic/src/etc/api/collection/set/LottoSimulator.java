@@ -18,7 +18,7 @@ static Random r = new Random();
     static int prize4 = 0; //4등 당첨 횟수를 세 줄 변수
     static int prize5 = 0; //5등 당첨 횟수를 세 줄 변수
     static int failCnt = 0; // 당첨 횟수를 세 줄 변수
-    
+    static int[] win =  new int[5]; // 이번주 로또 번호 출력
     
     public static Set<Integer> createLotto() {
         
@@ -31,7 +31,8 @@ static Random r = new Random();
     	Set<Integer> set = new HashSet<>();
     	
     	while(set.size()<6) {
-    		set.add((int) (Math.random()*45) + 1);
+    		int num = r.nextInt(45) + 1;
+    		set.add(num);
     	}
     	return set;
     	
@@ -39,7 +40,7 @@ static Random r = new Random();
     
     
     //보너스 번호를 생성하는 메서드
-    public static int createBonusNum(Set<Integer> nums) {
+    public static int createBonusNum(Set<Integer> createNums) {
         
         /*
          - 매개값으로 전달되는 당첨 번호 집합을 전달 받으신 후
@@ -47,17 +48,16 @@ static Random r = new Random();
           범위는 마찬가지로 1 ~ 45 사이의 난수입니다.
          */
     	while(true) {
-	    	int bonusNum =  (int) (Math.random()*45) + 1;
-	    	for(Integer n:nums) {
-				if(n != bonusNum) {
-					return bonusNum;
-				}
+	    	int bonusNum =  r.nextInt(45) + 1;
+	    	if(!createNums.contains(bonusNum)){
+	    		return bonusNum;
+			
 			}
     	}
     }
     
     //당첨 등수를 알려주는 메서드
-    public static void checkLottoNumber(Set<Integer> nums,Set<Integer> saveNums, int bonusNum) {
+    public static void checkLottoNumber(Set<Integer> win,Set<Integer> saveNums, int bonusNum) {
         /*
          매개값으로 당첨번호집합, 구매한 로또 번호집합, 보너스번호를 받습니다.
          내 로또 번호와 당첨번호를 비교하여
@@ -71,17 +71,9 @@ static Random r = new Random();
          나머지 -> 꽝
          */
     	int i = 0; //일치 번호 횟수
-    	boolean flag = false;
-    	for(Integer s:saveNums) {
-    		for(Integer n:nums) {
-    			if(s==n) {  
-    				i++;
-    				break;
-    			}
-    		}
-    		if(s == bonusNum) {
-    			flag = true;
-    		}
+    	for(int s:saveNums) {
+    		if(win.contains(s)) i++;
+    		
     	}
     	
     	switch (i) {
@@ -89,9 +81,10 @@ static Random r = new Random();
 			prize1 ++;
 			break;
 		case 5:
-			prize3 ++;
-			if(flag) {
+			if(saveNums.contains(bonusNum)) {
 				prize2 ++;
+			} else {
+				prize3 ++;
 			}
 			break;
 		case 4:
@@ -109,13 +102,13 @@ static Random r = new Random();
     
     public static void main(String[] args) {
     	//로또 번호 생성 메서드를 호출해서 당첨 번호를 하나 고정시키세요.
-    	Set<Integer>  createNums =  createLotto();
+    	Set<Integer>  win =  createLotto();
     	  
         
         //보너스번호도 하나 고정시키세요.
-    	int bonusNum  = createBonusNum(createNums);
+    	int bonusNum  = createBonusNum(win);
         
-    	
+    	int paper = 0;
         while(true) {
 
         	/*
@@ -125,25 +118,29 @@ static Random r = new Random();
             - 로또를 구매하기 위한 금액도 출력하세요. (long)
             */
         	
-        	Set<Integer> saveNums = new HashSet<>();
-        	while(saveNums.size()<6) {
-        		saveNums.add((int) (Math.random()*45) + 1);
-        	}
+        	Set<Integer>  saveNums =  createLotto();
+        	paper ++;
         	
-        	checkLottoNumber(createNums ,saveNums,bonusNum);
+        	checkLottoNumber(win ,saveNums,bonusNum);
         	if(prize1 == 1) {
         		break;
         	}
         }
-        long totalAmount = 1000; //1등이 될 때 까지의 총 금액
-        System.out.println("꽝 : " + failCnt);
-        System.out.println("5등 : " + prize5);
-        System.out.println("4둥 : " + prize4);
-        System.out.println("3등 : " + prize3);
-        System.out.println("2등 : " + prize2);
+        
+        int total = prize1+prize2+prize3+prize4+prize5+ failCnt;
+        long totalAmount = 1000 * (long)total ; //1등이 될 때 까지의 총 금액
         System.out.println("1등 : " + prize1);
-        System.out.println("총 횟수  : " + (prize1+prize2+prize3+prize4+prize5+ failCnt)) ;
-        System.out.println("총 투자금액  : " + (prize1+prize2+prize3+prize4+prize5+ failCnt)*totalAmount) ;
+        System.out.println("2등 : " + prize2);
+        System.out.println("3등 : " + prize3);
+        System.out.println("4둥 : " + prize4);
+        System.out.println("5등 : " + prize5);
+        System.out.println("꽝 : " + failCnt);
+        System.out.println("총 횟수  : " + total) ;
+        System.out.println("총 투자금액  : " + totalAmount + "원 ") ;
+        
+        System.out.println("-----------------------------------------------------");
+        System.out.println(" 이번주 1등 번호 : " + win +  "  보너스 번호 : " + bonusNum);
+        System.out.println("-----------------------------------------------------");
         
 	}
 }
