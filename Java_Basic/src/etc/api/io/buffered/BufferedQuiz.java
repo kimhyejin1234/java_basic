@@ -1,9 +1,9 @@
 package etc.api.io.buffered;
 
-import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
-
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -28,9 +28,16 @@ public class BufferedQuiz {
 		 */
 
 		Scanner sc = new Scanner(System.in);
+		
+		//오늘 날짜 20230908file 이라는 이름으로 폴더를 생성
 		LocalDate nowDate = LocalDate.now();
-		String s = nowDate.toString();
-		String newDir = "C:\\mywork\\" + s.substring(0,4)+s.substring(5,7)+s.substring(8)+"file";
+		int year = nowDate.getYear();
+		int month = nowDate.getMonthValue();
+		int day = nowDate.getDayOfMonth();
+		int s = year*10000 + month*100 + day;
+		System.out.println(s);
+	    
+		String newDir = "C:\\mywork\\" + s +"file";
 		System.out.println(newDir);
 		File file = new File(newDir);
 		
@@ -41,30 +48,29 @@ public class BufferedQuiz {
 			System.out.println("해당 폴더가 존재합니다만 test 는 진행합니다. ");
 		}
 
+		//스캐너로 파일명을 입력받고 파일명.txt로 파일을 쓸 겁니다
 		System.out.print("파일명을 .txt 형식으로 입력하세요.\n");
+		System.out.print(">");
 		String fileName = sc.next();
 		sc.nextLine();
 		
+		// 입력받은 내용으로 file  write
 		FileWriter fw = null;
 		BufferedWriter bw = null;
 		
-		String str;
-		String[] strT = new String[100];
-		int count = 0 ;
 		try {
 			fw = new FileWriter(newDir+"\\"+fileName);
 			bw = new BufferedWriter(fw);
 			
 			while(true) {
-				System.out.print("내용을 입력하세요 :  ");
+				System.out.println("내용을 입력하세요 :  ");
 				System.out.print("<그만>입력시 파일내용이 출력됩니다. : ");
-				str = sc.nextLine();
+				System.out.print(">");
+				String str = sc.nextLine();
 				if(str.equals("그만")) break;
 				
-				strT[count] = str;
 				bw.write(str + "\r\n");
 				System.out.println("파일 정상 입력 완료!");
-				count ++;
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -80,9 +86,36 @@ public class BufferedQuiz {
 				e.printStackTrace();
 			}
 		}
-		for(int i=0 ; i< count ; i++) {
-			System.out.println(strT[i]);
+		
+		//*********************************
+		//저장 되어 있는 file read
+		//*********************************
+		
+		System.out.println("=== 파일 내용을 출력합니다. ===");
+		FileReader fr = null;
+		BufferedReader br = null;
+		try {
+			fr = new FileReader(newDir+"\\"+fileName);
+			br = new BufferedReader(fr);
+			String str ;
+			while((str = br.readLine()) != null) {
+				System.out.println(str);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				br.close();
+				fr.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
+		System.out.println("=== 출력 완료 . ===");
+		
 	}
 
 }
