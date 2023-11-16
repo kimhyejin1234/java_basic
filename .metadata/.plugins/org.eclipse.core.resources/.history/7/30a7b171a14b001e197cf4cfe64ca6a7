@@ -1,0 +1,19 @@
+package etc.api.lang.stringbuilder;
+
+public class StrBuilderExample {
+
+	public static void main(String[] args) {
+		String str = "hello";
+		System.out.println("str의 주소값 : " + str.hashCode());
+		
+		str = "hello world";
+		System.out.println("str의 주소값 : " + str.hashCode());
+		
+		str = "hello ~";
+		System.out.println("str의 주소값 : " + str.hashCode());
+		
+		str = "hello world";
+		System.out.println("str의 주소값 : " + str.hashCode());
+		
+	}
+}

@@ -1,0 +1,29 @@
+package etc.enum_.basic;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+
+		Developer kim = new Developer();
+		kim.name = "김철수";
+		kim.career = 3;
+		kim.lang = Languages.JAVA;
+		
+		
+		Developer hong = new Developer();
+		hong.name = "총길동";
+		hong.career = 10;
+		hong.lang = Languages.PYTHON;
+		
+		Developer park = new Developer();
+		park.name = "박뚜띠";
+		park.career = 5;
+		park.lang = Languages.CPP;
+		
+		System.out.println("kim 의 주력 언어" + kim.lang);
+		
+		
+		
+	}
+
+}

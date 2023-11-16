@@ -1,0 +1,9 @@
+package etc.api.lang.math;
+
+public class MathExample {
+	public static void main(String[] args) {
+		int i = (int) Math.ceil(1.1);
+		System.out.println(i);
+	}
+
+}

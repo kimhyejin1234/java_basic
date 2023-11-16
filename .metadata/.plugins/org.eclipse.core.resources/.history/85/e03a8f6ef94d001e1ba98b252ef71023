@@ -1,0 +1,12 @@
+package etc.inner;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+
+		//덧셈 계산을 하는 계산기를 만들어 쓰고 싶다.
+		Calculator addCal = new AddCalculator();
+		System.out.println(addCal.operate(30,50));
+	}
+
+}

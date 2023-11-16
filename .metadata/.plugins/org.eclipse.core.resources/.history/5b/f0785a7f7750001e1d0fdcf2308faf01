@@ -1,0 +1,11 @@
+package oop.this_super;
+
+public class person {
+	String name;
+	int age;
+	public person(String name , int age) {
+		// TODO Auto-generated constructor stub
+		this.name = name;
+		this.age = age;
+	}
+}

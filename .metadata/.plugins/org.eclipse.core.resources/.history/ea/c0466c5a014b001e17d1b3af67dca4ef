@@ -1,0 +1,17 @@
+package etc.exception.throws_;
+
+public class ThrowsExampleSelf {
+	
+	static String[] greetings = {"여기는","아무거나","다","할수있어"};
+	
+	static void greet (int indx) {
+		System.out.println(greetings[indx]);
+	}
+	public static void main(String[] args) {
+		
+		
+		greet(4);
+		
+	}
+
+}

@@ -1,0 +1,17 @@
+package etc.generic.basic;
+
+import java.util.Map;
+
+public class MainClass {
+
+	public static void main(String[] args) {
+
+		Box<String> box = new Box<>();//자바7 이후로 생성자 타입 생력 가능.
+		box.setObj("홍길동");
+		String name = box.getObj();//형 변환이 따로 필요 없다.
+		
+		
+
+	}
+
+}

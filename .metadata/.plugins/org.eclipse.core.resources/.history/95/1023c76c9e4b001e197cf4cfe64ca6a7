@@ -1,0 +1,5 @@
+package etc.api.lang.system;
+
+public class SystemTIme {
+
+}
