@@ -7,7 +7,10 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
+
+import javax.swing.text.DateFormatter;
 
 public class BufferedQuiz {
 
@@ -26,16 +29,42 @@ public class BufferedQuiz {
          4. '그만'으로 파일이 작성되었다면, 아무 방법으로나 
           파일을 읽어서 콘솔에 출력해 보세요.
 		 */
+		
+		
+	     int[] arr = {5, 23, 1, 43, 100, 200, 40};
+	        for (int i = 0; i < arr.length - 1; i++) {
+	            for (int j = i+1; j < arr.length; j++) {
+	                if (arr[i] > arr[j]) {
+	                    int temp = 0;
+	                    temp = arr[i];
+	                    arr[i] = arr[j];
+	                    arr[j] = temp;
+	                }
+	            }
+	        }
 
+	        for (int value : arr) {
+	            System.out.print(value + " ");
+	        }
+		
+		
+		
+		
+		
+		
 		Scanner sc = new Scanner(System.in);
 		
 		//오늘 날짜 20230908file 이라는 이름으로 폴더를 생성
 		LocalDate nowDate = LocalDate.now();
-		int year = nowDate.getYear();
-		int month = nowDate.getMonthValue();
-		int day = nowDate.getDayOfMonth();
-		int s = year*10000 + month*100 + day;
+//		int year = nowDate.getYear();
+//		int month = nowDate.getMonthValue();
+//		int day = nowDate.getDayOfMonth();
+//		int s = year*10000 + month*100 + day;
+//		
+		DateTimeFormatter  dtf = 	 DateTimeFormatter.ofPattern("yyyyMMdd");
+		String s = nowDate.format(dtf);
 		System.out.println(s);
+		
 	    
 		String newDir = "C:\\mywork\\" + s +"file";
 		System.out.println(newDir);
@@ -51,27 +80,31 @@ public class BufferedQuiz {
 		//스캐너로 파일명을 입력받고 파일명.txt로 파일을 쓸 겁니다
 		System.out.print("파일명을 .txt 형식으로 입력하세요.\n");
 		System.out.print(">");
-		String fileName = sc.next();
-		sc.nextLine();
+		String fileName = sc.nextLine();
+		
 		
 		// 입력받은 내용으로 file  write
 		FileWriter fw = null;
 		BufferedWriter bw = null;
-		
+		String text="";
 		try {
 			fw = new FileWriter(newDir+"\\"+fileName);
 			bw = new BufferedWriter(fw);
+			System.out.println("<그만>입력시 입력된 파일내용이 출력됩니다. : ");
 			
 			while(true) {
 				System.out.println("내용을 입력하세요 :  ");
-				System.out.print("<그만>입력시 파일내용이 출력됩니다. : ");
 				System.out.print(">");
 				String str = sc.nextLine();
 				if(str.equals("그만")) break;
 				
-				bw.write(str + "\r\n");
-				System.out.println("파일 정상 입력 완료!");
+//				bw.write(str + "\r\n");
+				text += (str + "\r\n");
+//				System.out.println("파일 정상 입력 완료!");
 			}
+			bw.write(text);
+			System.out.println("파일 정상 입력 완료!");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -86,6 +119,7 @@ public class BufferedQuiz {
 				e.printStackTrace();
 			}
 		}
+		
 		
 		//*********************************
 		//저장 되어 있는 file read
