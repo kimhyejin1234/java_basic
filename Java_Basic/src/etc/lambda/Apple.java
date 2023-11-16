@@ -4,7 +4,7 @@ import java.util.Objects;
 
 public class Apple {
     private int weight;//무게
-    private Color color;//색상
+    private Color color;//색상 ......
 
     public Apple() {
     }
